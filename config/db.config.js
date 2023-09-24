@@ -1,12 +1,12 @@
 //import external modules
-import sequelize,{Sequelize} from "sequelize";
+import sequelize from "sequelize";
 
 //import internal modules
 import { DB_CONFIG } from "./constants.js";
 import { getErrorFromErrorObj } from "../utils/helperFunction.js";
 
 
-const SequelizeConnection = new Sequelize({
+export const sequelizeConnection = new sequelize({
     host: DB_CONFIG.HOST,
     port:DB_CONFIG.PORT,
     dialect:DB_CONFIG.DIALECT,
@@ -17,8 +17,8 @@ const SequelizeConnection = new Sequelize({
 
 
 export function dbAuthenticate(){
-    SequelizeConnection.authenticate().then((db)=>{
-        console.log("Connection Successfull",db)
+    sequelizeConnection.authenticate().then((db)=>{
+        console.log("Database connection successfull")
     }).catch((error)=>{
         console.log("DB connect error",getErrorFromErrorObj(error));
     })

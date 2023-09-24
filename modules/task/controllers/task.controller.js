@@ -14,3 +14,13 @@ export async function addtask(req,res,next){
         errorResponse(req,res,RESPONSE_CODES.INTERNAL_SERVER_ERROR,RESPONSE_MESSAGES.ERROR_DEFAULT,error);
     }
 }
+
+export async function gettask(req,res,next){
+    try {
+        let params = deepCopy(req.body);
+        let taskData = await taskServices.gettask(params);
+        successResponse(req,res,RESPONSE_CODES.SUCCESS,RESPONSE_MESSAGES.SUCCESS_DEFAULT,taskData)
+    } catch (error) {
+        errorResponse(req,res,RESPONSE_CODES.INTERNAL_SERVER_ERROR,RESPONSE_MESSAGES.ERROR_DEFAULT,error);
+    }
+}
