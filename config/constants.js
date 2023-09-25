@@ -14,7 +14,7 @@ export const SERVER_CONFIG = {
 export const DB_CONFIG = {
     PORT: ENV.DB_CONFIG_PORT || 3306,
     HOST: ENV.DB_CONFIG_HOST || "localhost",
-    DIALECT: ENV.DB_CONFIG_DILECT || "mysql",
+    DIALECT: ENV.DB_CONFIG_DIALECT || "mysql",
     USER_NAME: ENV.DB_CONFIG_USER_NAME || "root",
     PASSWORD: ENV.DB_CONFIG_PASSWORD || "phpMyAdmin@80",
     DATABASE: ENV.DB_CONFIG_DATABASE || "keep_task_track",
