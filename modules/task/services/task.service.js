@@ -90,17 +90,17 @@ export async function getTaskMetrics(params){
     }
 
     for(let date of metricDates){
-        let metrics = {date:date}
+        let metricsObj = {date:date,metrics:{}}
         for(let status in statusObj){
             let s = allTaskStatusHistory.find(h => (h.status == statusObj[status] && h.date == date));
             if(s){
-                metrics[status] = s.count;
+                metricsObj.metrics[status] = s.count;
             }else{
-                metrics[status] = 0;
+                metricsObj.metrics[status] = 0;
             }
             
         }
-        allMetrics.push(metrics);
+        allMetrics.push(metricsObj);
     }
 
     return allMetrics; 
