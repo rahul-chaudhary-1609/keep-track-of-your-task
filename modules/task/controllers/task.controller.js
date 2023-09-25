@@ -5,20 +5,40 @@ import { deepCopy } from "../../../utils/helperFunction.js";
 import { errorResponse, successResponse } from "../../../utils/responseHandler.js";
 import * as taskServices from "../services/task.service.js";
 
-export async function addtask(req,res,next){
+export async function addTask(req,res,next){
     try {
         let params = deepCopy(req.body);
-        let taskData = await taskServices.addtask(params);
+        let taskData = await taskServices.addTask(params);
         successResponse(req,res,RESPONSE_CODES.CREATED,RESPONSE_MESSAGES.TASK.CREATED,taskData)
     } catch (error) {
         errorResponse(req,res,RESPONSE_CODES.INTERNAL_SERVER_ERROR,RESPONSE_MESSAGES.ERROR_DEFAULT,error);
     }
 }
 
-export async function gettask(req,res,next){
+export async function updateTask(req,res,next){
     try {
         let params = deepCopy(req.body);
-        let taskData = await taskServices.gettask(params);
+        let taskData = await taskServices.updateTask(params);
+        successResponse(req,res,RESPONSE_CODES.CREATED,RESPONSE_MESSAGES.SUCCESS_DEFAULT,taskData)
+    } catch (error) {
+        errorResponse(req,res,RESPONSE_CODES.INTERNAL_SERVER_ERROR,RESPONSE_MESSAGES.ERROR_DEFAULT,error);
+    }
+}
+
+export async function getTask(req,res,next){
+    try {
+        let params = deepCopy(req.query);
+        let taskData = await taskServices.getTask(params);
+        successResponse(req,res,RESPONSE_CODES.SUCCESS,RESPONSE_MESSAGES.SUCCESS_DEFAULT,taskData)
+    } catch (error) {
+        errorResponse(req,res,RESPONSE_CODES.INTERNAL_SERVER_ERROR,RESPONSE_MESSAGES.ERROR_DEFAULT,error);
+    }
+}
+
+export async function getTaskMetrics(req,res,next){
+    try {
+        let params = deepCopy(req.query);
+        let taskData = await taskServices.getTaskMetrics(params);
         successResponse(req,res,RESPONSE_CODES.SUCCESS,RESPONSE_MESSAGES.SUCCESS_DEFAULT,taskData)
     } catch (error) {
         errorResponse(req,res,RESPONSE_CODES.INTERNAL_SERVER_ERROR,RESPONSE_MESSAGES.ERROR_DEFAULT,error);

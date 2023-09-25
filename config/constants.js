@@ -40,7 +40,15 @@ export const RESPONSE_MESSAGES = {
     SUCCESS_DEFAULT: "Successfull!",
     ERROR_DEFAULT: "Something went wrong!",
     NOT_FOUND:"Method not found!",
+    INVALID_REQUEST:"Invalid request data",
     TASK:{
         CREATED:"New Task Added successfully"
+    }
+}
+
+export const DB_CONSTANTS = {
+    TABLES:{
+        TASKS:"tasks",
+        TASK_STATUS_HISTORY: "task_status_history"
     }
 }
